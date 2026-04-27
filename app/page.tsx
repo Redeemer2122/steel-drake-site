@@ -1,17 +1,11 @@
 export default function Home() {
   return (
-    <main
-      style={{
-        background: "#0A0A0A",
-        color: "#F0F0F0",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-        fontFamily: "sans-serif",
-      }}
-    >
-      <h1>STEEL DRAKE — Initializing...</h1>
-    </main>
+    <div className="flex min-h-[60dvh] items-center px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1400px]">
+        <p className="font-display text-sm font-black uppercase tracking-[0.18em] text-[var(--text-primary)]">
+          <span className="text-accent">—</span> Steel Drake — Initializing...
+        </p>
+      </div>
+    </div>
   );
 }
