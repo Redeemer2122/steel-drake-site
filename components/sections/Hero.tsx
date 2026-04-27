@@ -72,14 +72,14 @@ function ScrollIndicator() {
       transition={{ delay: 1.8, duration: 0.6, ease: EASE }}
     >
       <span
-        className="text-[10px] font-body font-medium tracking-[0.2em] text-[var(--text-secondary)] uppercase"
+        className="text-[10px] font-body font-medium tracking-[0.2em] text-(--text-secondary) uppercase"
         style={{ writingMode: "vertical-rl" }}
       >
         Scroll
       </span>
       <div className="w-px h-10 overflow-hidden relative">
         <motion.div
-          className="w-full bg-gradient-to-b from-[var(--accent)] to-transparent absolute top-0"
+          className="w-full bg-linear-to-b from-(--accent) to-transparent absolute top-0"
           animate={{ y: ["0%", "-100%"] }}
           transition={{
             duration: 1.4,
@@ -109,7 +109,7 @@ function StatCounter({
       <span className="font-display text-xl md:text-2xl font-black text-accent tracking-tight">
         {value}
       </span>
-      <span className="font-body text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--text-secondary)]">
+      <span className="font-body text-[10px] font-medium uppercase tracking-[0.14em] text-(--text-secondary)">
         {label}
       </span>
     </motion.div>
@@ -141,7 +141,7 @@ export function Hero() {
       {/* ── Grain texture (inherited from globals.css via body:after) ── */}
 
       {/* ── Glassmorphism content block ── */}
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-[720px]"
           variants={containerVariants}
@@ -189,7 +189,7 @@ export function Hero() {
 
             {/* Description */}
             <motion.p
-              className="font-body text-[15px] text-[var(--text-secondary)] max-w-[400px] leading-relaxed"
+              className="font-body text-[15px] text-(--text-secondary) max-w-[400px] leading-relaxed"
               style={{ lineHeight: 1.6 }}
               variants={itemVariants}
             >
@@ -212,7 +212,7 @@ export function Hero() {
 
       {/* ── Stats row at bottom ── */}
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 mt-auto pb-32"
+        className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-auto pb-32"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

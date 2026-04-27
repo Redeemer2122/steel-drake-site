@@ -9,11 +9,11 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "border-accent bg-accent text-[#0A0A0A] font-display font-bold hover:shadow-[var(--glow)]",
+    "border-accent bg-accent text-[#0A0A0A] font-display font-bold hover:shadow-(--glow)",
   outline:
-    "border-accent bg-transparent text-accent hover:bg-[rgba(0,212,255,0.06)] hover:shadow-[var(--glow)]",
+    "border-accent bg-transparent text-accent hover:bg-[rgba(0,212,255,0.06)] hover:shadow-(--glow)",
   ghost:
-    "border-transparent bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]",
+    "border-transparent bg-transparent text-(--text-secondary) hover:text-(--text-primary)",
 };
 
 export function Button({

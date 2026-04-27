@@ -11,7 +11,7 @@ export function GlassCard({
 }: GlassCardProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[2px] border border-white/[0.08] bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-[12px] ${className}`}
+      className={`relative overflow-hidden rounded-2 border border-white/8 bg-white/3 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md ${className}`}
       {...props}
     >
       <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10" />

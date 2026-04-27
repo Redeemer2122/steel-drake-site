@@ -34,13 +34,13 @@ export function Navbar() {
     <>
       <motion.header
         style={{ backgroundColor: navBackground, borderBottomColor: navBorder }}
-        className="fixed inset-x-0 top-0 z-40 border-b backdrop-blur-[20px]"
+        className="fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md"
       >
         <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
             aria-label="Steel Drake home"
-            className="font-display text-sm font-black uppercase tracking-[0.16em] text-[var(--text-primary)] transition-colors duration-200 hover:text-white sm:text-base"
+            className="font-display text-sm font-black uppercase tracking-[0.16em] text-(--text-primary) transition-colors duration-200 hover:text-white sm:text-base"
           >
             <span className="mr-2 text-accent">—</span>Steel Drake
           </Link>
@@ -50,7 +50,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-body text-[13px] font-medium uppercase tracking-[0.15em] text-[var(--text-secondary)] transition-colors duration-200 hover:text-accent"
+                className="font-body text-[13px] font-medium uppercase tracking-[0.15em] text-(--text-secondary) transition-colors duration-200 hover:text-accent"
               >
                 {link.label}
               </Link>
@@ -64,13 +64,13 @@ export function Navbar() {
             }
             aria-expanded={isOpen}
             onClick={() => setIsOpen((value) => !value)}
-            className="relative flex h-11 w-11 items-center justify-center border border-white/[0.08] bg-white/[0.03] md:hidden"
+            className="relative flex h-11 w-11 items-center justify-center border border-white/8 bg-white/3 md:hidden"
           >
             <span className="sr-only">Menu</span>
             {[0, 1, 2].map((line) => (
               <motion.span
                 key={line}
-                className="absolute h-px w-5 bg-[var(--text-primary)]"
+                className="absolute h-px w-5 bg-(--text-primary)"
                 animate={
                   isOpen
                     ? line === 0
@@ -94,7 +94,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-30 bg-[rgba(10,10,10,0.96)] backdrop-blur-[20px] md:hidden"
+            className="fixed inset-0 z-30 bg-[rgba(10,10,10,0.96)] backdrop-blur-md md:hidden"
           >
             <motion.div
               initial="closed"
@@ -122,7 +122,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="font-display text-3xl font-black uppercase tracking-[0.08em] text-[var(--text-primary)] transition-colors duration-200 hover:text-accent"
+                    className="font-display text-3xl font-black uppercase tracking-[0.08em] text-(--text-primary) transition-colors duration-200 hover:text-accent"
                   >
                     {link.label}
                   </Link>

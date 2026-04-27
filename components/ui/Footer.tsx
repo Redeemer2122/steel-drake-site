@@ -21,7 +21,7 @@ export function Footer() {
     <footer className="border-t border-white/[0.06] px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-[1400px] flex-col gap-6">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-[var(--text-muted)]">© 2025 Steel Drake</p>
+          <p className="text-sm text-(--text-muted)">© 2025 Steel Drake</p>
           <div className="flex items-center gap-3">
             {socials.map((social) => (
               <Link
@@ -30,14 +30,14 @@ export function Footer() {
                 aria-label={social.label}
                 target="_blank"
                 rel="noreferrer"
-                className="group text-[var(--text-muted)]"
+                className="group text-(--text-muted)"
               >
                 <SocialMark label={social.label} />
               </Link>
             ))}
           </div>
         </div>
-        <p className="font-body text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+        <p className="font-body text-[11px] uppercase tracking-[0.16em] text-(--text-muted)">
           Bishkek, Kyrgyzstan · Multidisciplinary Designer
         </p>
       </div>
