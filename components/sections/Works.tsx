@@ -60,7 +60,7 @@ export function Works() {
         {/* View All CTA */}
         <RevealOnScroll delay={0.4}>
           <div className="mt-12 flex items-center justify-center">
-            <button className="group relative flex items-center gap-3 border border-white/12 bg-white/[0.03] px-8 py-4 backdrop-blur-md transition-all duration-500 hover:border-accent/40 hover:bg-white/[0.06]">
+            <button className="group relative flex items-center gap-3 border border-white/12 bg-white/3 px-8 py-4 backdrop-blur-md transition-all duration-500 hover:border-accent/40 hover:bg-white/6">
               <span className="absolute inset-x-0 top-0 h-px bg-accent/0 transition-all duration-500 group-hover:bg-accent/60" />
               <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-white/80 transition-colors group-hover:text-white">
                 View All Projects

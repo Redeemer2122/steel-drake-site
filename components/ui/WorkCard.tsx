@@ -24,7 +24,7 @@ export function WorkCard({ work, index }: WorkCardProps) {
       initial="rest"
     >
       <div
-        className={`relative w-full ${aspect} overflow-hidden border border-white/[0.06] bg-surface transition-all duration-500 hover:scale-[1.02] hover:border-[${work.accentColor}]/40`}
+        className={`relative w-full ${aspect} overflow-hidden border border-white/6 bg-surface transition-all duration-500 hover:scale-[1.02]`}
         style={{
           borderColor: "rgba(255,255,255,0.06)",
         }}
