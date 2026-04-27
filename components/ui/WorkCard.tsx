@@ -9,17 +9,18 @@ type WorkCardProps = {
 };
 
 const sizeConfig = {
-  large: { aspect: "aspect-[4/3]", cols: "col-span-2" },
-  small: { aspect: "aspect-square", cols: "col-span-1" },
-  medium: { aspect: "aspect-[21/9]", cols: "col-span-3" },
+  large: { aspect: "aspect-[4/3]", cols: "col-span-2", rows: "" },
+  small: { aspect: "aspect-square", cols: "col-span-1", rows: "" },
+  medium: { aspect: "aspect-[21/9]", cols: "col-span-3", rows: "" },
+  tall: { aspect: "aspect-[3/4]", cols: "col-span-1", rows: "row-span-2" },
 };
 
 export function WorkCard({ work, index }: WorkCardProps) {
-  const { aspect, cols } = sizeConfig[work.size];
+  const { aspect, cols, rows } = sizeConfig[work.size];
 
   return (
     <motion.div
-      className={`group relative overflow-hidden cursor-pointer ${cols}`}
+      className={`group relative overflow-hidden cursor-pointer ${cols} ${rows}`}
       whileHover="hover"
       initial="rest"
     >

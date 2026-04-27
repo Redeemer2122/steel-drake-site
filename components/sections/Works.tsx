@@ -25,33 +25,34 @@ export function Works() {
           </h2>
         </RevealOnScroll>
 
-        {/* Bento Grid */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-3"
-          style={{
-            gridTemplateColumns: "repeat(3, 1fr)",
-          }}
-        >
-          {/* Row 1: Large (2/3) + Small (1/3) */}
+        {/* Bento Grid - Dynamic asymmetric layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 auto-rows-[280px] md:auto-rows-[320px]">
+          {/* Project 1: col-span-2 - Land Cruiser */}
           <RevealOnScroll delay={0.1}>
             <WorkCard work={works[0]} index={0} />
           </RevealOnScroll>
+
+          {/* Project 2: small card */}
           <RevealOnScroll delay={0.15}>
             <WorkCard work={works[1]} index={1} />
           </RevealOnScroll>
 
-          {/* Row 2: Small + Small + Small */}
+          {/* Project 3: row-span-2 - Tesla Model SD */}
           <RevealOnScroll delay={0.2}>
             <WorkCard work={works[2]} index={2} />
           </RevealOnScroll>
+
+          {/* Project 4: col-span-2 - Automotive Concepts */}
           <RevealOnScroll delay={0.25}>
             <WorkCard work={works[3]} index={3} />
           </RevealOnScroll>
+
+          {/* Project 5: small card */}
           <RevealOnScroll delay={0.3}>
             <WorkCard work={works[4]} index={4} />
           </RevealOnScroll>
 
-          {/* Row 3: Medium (full width) */}
+          {/* Project 6: small card */}
           <RevealOnScroll delay={0.35}>
             <WorkCard work={works[5]} index={5} />
           </RevealOnScroll>

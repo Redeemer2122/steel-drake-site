@@ -130,8 +130,6 @@ export function Hero() {
         }}
       />
 
-      {/* ── Grain texture (inherited from globals.css via body:after) ── */}
-
       {/* ── Glassmorphism content block ── */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -168,16 +166,20 @@ export function Hero() {
 
             {/* Massive headline */}
             <motion.h1
-              className="font-display font-black uppercase leading-[0.95] tracking-[-0.02em] text-[clamp(48px,8vw,120px)] my-6"
+              className="font-display font-black uppercase leading-[0.95] tracking-[-0.02em] text-[clamp(40px,7vw,80px)] md:text-5xl my-6"
               style={{ lineHeight: 0.95 }}
               variants={itemVariants}
             >
-              Design
-              <br />
-              <span style={{ color: "var(--accent)" }}>Beyond</span>
-              <br />
-              Limits
+              Design Beyond Limits
             </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              className="font-display text-[clamp(14px,2vw,18px)] font-light text-accent tracking-[0.08em] uppercase mb-6"
+              variants={itemVariants}
+            >
+              Industrial Design & Automotive Artistry by Steel Drake
+            </motion.p>
 
             {/* Description */}
             <motion.p

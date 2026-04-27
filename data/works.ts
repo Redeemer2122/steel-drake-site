@@ -3,7 +3,7 @@ export interface Work {
   title: string;
   category: string;
   year: string;
-  size: "large" | "small" | "medium";
+  size: "large" | "small" | "medium" | "tall";
   accentColor: string;
   description?: string;
 }
@@ -31,7 +31,7 @@ export const works: Work[] = [
     title: "Tesla Model SD",
     category: "Automotive Concept",
     year: "2023",
-    size: "small",
+    size: "tall",
     accentColor: "#00D4FF",
   },
   {
@@ -39,7 +39,7 @@ export const works: Work[] = [
     title: "Automotive Concepts",
     category: "Motion & Design",
     year: "2023",
-    size: "medium",
+    size: "large",
     accentColor: "#FF6B1A",
   },
   {
