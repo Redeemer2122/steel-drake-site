@@ -19,8 +19,8 @@ const stats = [
 
 export function About() {
   return (
-    <section id="about" className="relative w-full px-6 py-[160px]">
-      <div className="mx-auto max-w-[1400px]">
+    <section id="about" className="relative w-full px-6 py-40">
+      <div className="mx-auto max-w-7xl">
         {/* Section Label */}
         <RevealOnScroll delay={0}>
           <SectionLabel index="01" className="mb-12">
@@ -43,7 +43,7 @@ export function About() {
 
             {/* Bio */}
             <RevealOnScroll delay={0.2}>
-              <p className="font-body text-base text-[var(--text-secondary)] leading-relaxed max-w-[52ch] mb-12">
+              <p className="font-body text-base text-(--text-secondary) leading-relaxed max-w-[52ch] mb-12">
                 Multidisciplinary designer with deep expertise in industrial
                 design and automotive aesthetics. Building visual systems that
                 communicate authority, precision, and forward motion.
@@ -75,12 +75,12 @@ export function About() {
           <RevealOnScroll delay={0.2}>
             <div className="relative lg:mt-16">
               {/* Photo placeholder */}
-              <div className="relative aspect-[3/4] overflow-hidden border border-white/8 bg-[var(--bg-surface)]">
+              <div className="relative aspect-3/4 overflow-hidden border border-white/8 bg-surface">
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                   <span className="text-accent font-display text-4xl tracking-widest opacity-50 uppercase">
                     [ Photo ]
                   </span>
-                  <span className="text-[var(--text-secondary)] font-body text-xs uppercase tracking-[0.2em] opacity-40">
+                  <span className="text-(--text-secondary) font-body text-xs uppercase tracking-[0.2em] opacity-40">
                     01 — Steel Drake
                   </span>
                 </div>
@@ -110,7 +110,7 @@ export function About() {
                 <div className="font-display text-4xl font-black text-accent leading-none tracking-tight mb-2">
                   {s.value}
                 </div>
-                <div className="font-body text-xs uppercase tracking-[0.16em] text-[var(--text-secondary)]">
+                <div className="font-body text-xs uppercase tracking-[0.16em] text-(--text-secondary)">
                   {s.label}
                 </div>
               </div>

@@ -79,7 +79,7 @@ function ScrollIndicator() {
       </span>
       <div className="w-px h-10 overflow-hidden relative">
         <motion.div
-          className="w-full bg-linear-to-b from-(--accent) to-transparent absolute top-0"
+          className="w-full bg-linear-to-b from-accent to-transparent absolute top-0"
           animate={{ y: ["0%", "-100%"] }}
           transition={{
             duration: 1.4,
