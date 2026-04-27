@@ -92,15 +92,7 @@ function ScrollIndicator() {
   );
 }
 
-function StatCounter({
-  value,
-  label,
-  index,
-}: {
-  value: string;
-  label: string;
-  index: number;
-}) {
+function StatCounter({ value, label }: { value: string; label: string }) {
   return (
     <motion.div
       className="flex flex-col items-center gap-1"
@@ -118,7 +110,7 @@ function StatCounter({
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden">
+    <section className="relative min-h-dvh flex flex-col justify-center overflow-hidden">
       {/* ── Background: Variant B — CSS gradient + HUD grid ── */}
       <div
         className="absolute inset-0 z-0"
@@ -132,7 +124,7 @@ export function Hero() {
 
       {/* ── Bottom overlay for text readability ── */}
       <div
-        className="absolute inset-0 z-[1] pointer-events-none"
+        className="absolute inset-0 z-1 pointer-events-none"
         style={{
           background: "linear-gradient(to top, #0A0A0A 0%, transparent 50%)",
         }}
@@ -143,7 +135,7 @@ export function Hero() {
       {/* ── Glassmorphism content block ── */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="max-w-[720px]"
+          className="max-w-180"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -189,7 +181,7 @@ export function Hero() {
 
             {/* Description */}
             <motion.p
-              className="font-body text-[15px] text-(--text-secondary) max-w-[400px] leading-relaxed"
+              className="font-body text-[15px] text-(--text-secondary) max-w-100 leading-relaxed"
               style={{ lineHeight: 1.6 }}
               variants={itemVariants}
             >
@@ -220,7 +212,7 @@ export function Hero() {
         <div className="flex gap-8 md:gap-16 items-start flex-wrap">
           {stats.map((stat, i) => (
             <div key={stat.label} className="flex gap-8 md:gap-16 items-start">
-              <StatCounter value={stat.value} label={stat.label} index={i} />
+              <StatCounter value={stat.value} label={stat.label} />
               {i < stats.length - 1 && (
                 <div
                   className="w-px self-stretch"
