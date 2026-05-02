@@ -139,7 +139,7 @@ export function Hero() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            filter: "brightness(0.25) contrast(1.2) saturate(0.8)",
+            filter: "brightness(0.45) contrast(1.3) saturate(1.1)",
           }}
         >
           <source src="/video/hero.mp4" type="video/mp4" />
@@ -204,25 +204,6 @@ export function Hero() {
             >
               Design Beyond Limits
             </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              className="font-display text-[clamp(14px,2vw,18px)] font-light text-accent tracking-[0.08em] uppercase mb-6"
-              variants={itemVariants}
-            >
-              Industrial Design & Automotive Artistry by Steel Drake
-            </motion.p>
-
-            {/* Description */}
-            <motion.p
-              className="font-body text-[15px] text-(--text-secondary) max-w-100 leading-relaxed"
-              style={{ lineHeight: 1.6 }}
-              variants={itemVariants}
-            >
-              Industrial design, automotive concepts, branding and motion.
-              <br />
-              767K+ views on Behance. Featured in Best of Behance.
-            </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
