@@ -36,6 +36,39 @@ const stats = [
   { value: "13+", label: "Years Experience" },
 ];
 
+// ── BlurText — ReactBits-style staggered word-by-word reveal ──
+function BlurText({
+  text,
+  className = "",
+}: {
+  text: string;
+  className?: string;
+}) {
+  const words = text.split(" ");
+  return (
+    <span className={`flex flex-wrap gap-x-[0.28em] ${className}`}>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ filter: "blur(12px)", opacity: 0, y: -32 }}
+          animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            ease: EASE,
+            delay: 0.4 + i * 0.14,
+          }}
+          style={{
+            display: "inline-block",
+            willChange: "transform,filter,opacity",
+          }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
 function HUDGrid() {
   return (
     <svg
@@ -172,12 +205,7 @@ export function Hero() {
           animate="visible"
         >
           {/* Glassmorphism panel */}
-          <div
-            className="relative"
-            style={{
-              position: "relative",
-            }}
-          >
+          <div className="relative">
             {/* Inner refraction edge */}
             <div
               className="absolute inset-0 rounded-none pointer-events-none"
@@ -193,17 +221,16 @@ export function Hero() {
               </SectionLabel>
             </motion.div>
 
-            {/* Massive headline */}
-            <motion.h1
-              className="font-display font-black uppercase leading-[0.95] tracking-[-0.02em] text-[clamp(56px,8vw,120px)] my-6"
+            {/* Massive headline — BlurText per word */}
+            <h1
+              className="font-display font-black uppercase tracking-[-0.02em] text-[clamp(56px,8vw,120px)] my-6"
               style={{
                 lineHeight: 0.95,
                 textShadow: "0 2px 60px rgba(0,0,0,0.9)",
               }}
-              variants={itemVariants}
             >
-              Design Beyond Limits
-            </motion.h1>
+              <BlurText text="Design Beyond Limits" />
+            </h1>
 
             {/* CTA Buttons */}
             <motion.div
