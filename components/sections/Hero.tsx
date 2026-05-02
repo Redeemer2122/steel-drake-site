@@ -4,18 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const STAGGER_DELAY = 0.12;
 const EASE = [0.16, 1, 0.3, 1] as const;
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: STAGGER_DELAY,
-      delayChildren: 0.1,
-    },
-  },
-};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30, scale: 1.02 },
@@ -29,12 +18,6 @@ const itemVariants = {
     },
   },
 };
-
-const stats = [
-  { value: "767K+", label: "Views" },
-  { value: "24.8K", label: "Appreciations" },
-  { value: "13+", label: "Years Experience" },
-];
 
 // ── BlurText — ReactBits-style staggered word-by-word reveal ──
 function BlurText({
@@ -125,22 +108,6 @@ function ScrollIndicator() {
   );
 }
 
-function StatCounter({ value, label }: { value: string; label: string }) {
-  return (
-    <motion.div
-      className="flex flex-col items-center gap-1"
-      variants={itemVariants}
-    >
-      <span className="font-display text-xl md:text-2xl font-black text-accent tracking-tight">
-        {value}
-      </span>
-      <span className="font-body text-[10px] font-medium uppercase tracking-[0.14em] text-(--text-secondary)">
-        {label}
-      </span>
-    </motion.div>
-  );
-}
-
 export function Hero() {
   return (
     <section
@@ -198,12 +165,7 @@ export function Hero() {
           padding: "0 8%",
         }}
       >
-        <motion.div
-          className="w-full max-w-2xl"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="w-full max-w-2xl">
           {/* Glassmorphism panel */}
           <div className="relative">
             {/* Inner refraction edge */}
@@ -215,7 +177,11 @@ export function Hero() {
             />
 
             {/* Label */}
-            <motion.div variants={itemVariants}>
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+            >
               <SectionLabel index="01">
                 Multidisciplinary Designer · Bishkek
               </SectionLabel>
@@ -236,49 +202,18 @@ export function Hero() {
             <motion.div
               className="flex gap-4 mt-10 flex-wrap"
               variants={itemVariants}
+              initial="hidden"
+              animate="visible"
             >
               <Button variant="primary">View Works</Button>
               <Button variant="outline">Get in Touch</Button>
             </motion.div>
           </div>
-        </motion.div>
-      </div>
-
-      {/* ── Stats row at bottom ── */}
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-auto pb-32"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="flex gap-8 md:gap-16 items-start flex-wrap">
-          {stats.map((stat, i) => (
-            <div key={stat.label} className="flex gap-8 md:gap-16 items-start">
-              <StatCounter value={stat.value} label={stat.label} />
-              {i < stats.length - 1 && (
-                <div
-                  className="w-px self-stretch"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.1)",
-                  }}
-                />
-              )}
-            </div>
-          ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* ── Scroll indicator ── */}
       <ScrollIndicator />
-
-      {/* ── Mobile responsive adjustments via inline style ── */}
-      <style>{`
-        @media (max-width: 640px) {
-          .hero-glass-panel {
-            padding: 32px 28px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
