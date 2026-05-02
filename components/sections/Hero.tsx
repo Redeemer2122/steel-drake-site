@@ -175,11 +175,7 @@ export function Hero() {
           <div
             className="relative"
             style={{
-              background: "rgba(10, 10, 10, 0.6)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
-              padding: "48px 56px",
+              position: "relative",
             }}
           >
             {/* Inner refraction edge */}
@@ -200,7 +196,10 @@ export function Hero() {
             {/* Massive headline */}
             <motion.h1
               className="font-display font-black uppercase leading-[0.95] tracking-[-0.02em] text-[clamp(56px,8vw,120px)] my-6"
-              style={{ lineHeight: 0.95 }}
+              style={{
+                lineHeight: 0.95,
+                textShadow: "0 2px 60px rgba(0,0,0,0.9)",
+              }}
               variants={itemVariants}
             >
               Design Beyond Limits
