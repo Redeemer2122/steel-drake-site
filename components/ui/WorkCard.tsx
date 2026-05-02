@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Work } from "@/data/works";
 
@@ -90,11 +91,23 @@ export function WorkCard({ work, index }: WorkCardProps) {
           </svg>
         </motion.div>
 
-        {/* Gradient placeholder */}
+        {/* Project Image */}
+        {work.image && (
+          <Image
+            src={work.image}
+            alt={work.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        )}
+
+        {/* Gradient overlay for text readability */}
         <div
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(ellipse at 30% 70%, ${work.accentColor}08 0%, transparent 60%),
+            background: `linear-gradient(to top, ${work.accentColor}15 0%, transparent 40%),
+                        radial-gradient(ellipse at 30% 70%, ${work.accentColor}08 0%, transparent 60%),
                         radial-gradient(ellipse at 70% 30%, ${work.accentColor}05 0%, transparent 50%)`,
           }}
         />

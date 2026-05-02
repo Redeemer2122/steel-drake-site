@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "label": "Multidisciplinary Designer · Bishkek",
+    "title": "Design Beyond Limits",
+    "description": "Industrial design, automotive concepts, branding and motion.",
+    "stats": {
+      "views": "Views",
+      "appreciations": "Appreciations",
+      "experience": "Years Experience"
+    },
+    "cta": {
+      "viewWorks": "View Works",
+      "getInTouch": "Get in Touch"
+    }
+  },
+  "nav": {
+    "works": "Works",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hud": {
+    "fps": "FPS",
+    "session": "SESSION",
+    "coords": "COORDS"
+  },
+  "works": {
+    "title": "Selected Works",
+    "viewProject": "View Project"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a multidisciplinary designer focused on industrial design, automotive concepts, and motion graphics."
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "Have a project in mind? Let's create something extraordinary together."
+  }
+}

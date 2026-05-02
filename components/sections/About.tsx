@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { ReactElement } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -125,19 +126,20 @@ export function About() {
             </div>
           </div>
 
-          {/* Right Column — Photo Block with GlassCard */}
+          {/* Right Column — Photo Block */}
           <RevealOnScroll delay={0.2}>
             <div className="relative lg:mt-16">
-              {/* Photo placeholder wrapped in GlassCard */}
-              <GlassCard className="aspect-3/4">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <span className="text-accent font-display text-4xl tracking-widest opacity-50 uppercase">
-                    [ Photo ]
-                  </span>
-                  <span className="text-(--text-secondary) font-body text-xs uppercase tracking-[0.2em] opacity-40">
-                    01 — Steel Drake
-                  </span>
-                </div>
+              {/* Photo wrapped in GlassCard */}
+              <GlassCard className="aspect-3/4 overflow-hidden">
+                <Image
+                  src="/images/designer.jpg"
+                  alt="Steel Drake — Multidisciplinary Designer"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+                {/* Subtle gradient overlay at bottom */}
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
                 {/* Corner accent line */}
                 <span className="absolute bottom-0 right-0 h-16 w-px bg-accent/40" />
                 <span className="absolute bottom-0 right-0 h-px w-16 bg-accent/40" />
