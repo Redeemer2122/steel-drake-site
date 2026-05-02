@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -139,7 +137,7 @@ export function Hero() {
       >
         <div className="w-full max-w-2xl">
           {/* Glassmorphism panel */}
-          <div className="relative">
+          <div className="relative" style={{ overflow: "hidden" }}>
             {/* Inner refraction edge */}
             <div
               className="absolute inset-0 rounded-none pointer-events-none"
@@ -148,38 +146,21 @@ export function Hero() {
               }}
             />
 
-            {/* Label */}
-            <motion.div
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <SectionLabel index="01">
-                Multidisciplinary Designer · Bishkek
-              </SectionLabel>
-            </motion.div>
-
             {/* Massive headline — BlurText per word */}
             <h1
-              className="font-display font-black uppercase tracking-[-0.02em] text-[clamp(56px,8vw,120px)] my-6"
+              className="font-display font-black uppercase w-full"
               style={{
-                lineHeight: 0.95,
-                textShadow: "0 2px 60px rgba(0,0,0,0.9)",
+                lineHeight: 0.9,
+                color: "#FFFFFF",
+                textShadow:
+                  "0 0 80px rgba(0,212,255,0.4), 0 2px 20px rgba(0,0,0,0.8)",
+                letterSpacing: "-0.02em",
+                fontSize: "clamp(60px, 12vw, 180px)",
+                whiteSpace: "nowrap",
               }}
             >
               <BlurText text="Design Beyond Limits" />
             </h1>
-
-            {/* CTA Buttons */}
-            <motion.div
-              className="flex gap-4 mt-10 flex-wrap"
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <Button variant="primary">View Works</Button>
-              <Button variant="outline">Get in Touch</Button>
-            </motion.div>
           </div>
         </div>
       </div>
