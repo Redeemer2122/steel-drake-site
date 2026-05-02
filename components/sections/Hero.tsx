@@ -110,7 +110,16 @@ function StatCounter({ value, label }: { value: string; label: string }) {
 
 export function Hero() {
   return (
-    <section className="relative min-h-dvh flex flex-col justify-center overflow-hidden">
+    <section
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: "0 8%",
+        position: "relative",
+      }}
+    >
       {/* ── Background: Variant B — CSS gradient + HUD grid ── */}
       <div
         className="absolute inset-0 z-0"
@@ -119,6 +128,22 @@ export function Hero() {
             "radial-gradient(ellipse 80% 60% at 70% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 60%), #0A0A0A",
         }}
       >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            filter: "brightness(0.25) contrast(1.2) saturate(0.8)",
+          }}
+        >
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
         <HUDGrid />
       </div>
 
@@ -131,9 +156,17 @@ export function Hero() {
       />
 
       {/* ── Glassmorphism content block ── */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div
+        className="relative z-10 w-full"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          minHeight: "100vh",
+          padding: "0 8%",
+        }}
+      >
         <motion.div
-          className="max-w-180"
+          className="w-full max-w-2xl"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -166,7 +199,7 @@ export function Hero() {
 
             {/* Massive headline */}
             <motion.h1
-              className="font-display font-black uppercase leading-[0.95] tracking-[-0.02em] text-[clamp(40px,7vw,80px)] md:text-5xl my-6"
+              className="font-display font-black uppercase leading-[0.95] tracking-[-0.02em] text-[clamp(56px,8vw,120px)] my-6"
               style={{ lineHeight: 0.95 }}
               variants={itemVariants}
             >
