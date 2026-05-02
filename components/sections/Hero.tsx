@@ -157,7 +157,7 @@ export function Hero() {
                 textShadow:
                   "0 0 20px rgba(255,255,255,0.8), 0 0 60px rgba(0,212,255,0.4)",
                 position: "absolute",
-                bottom: "65%",
+                top: "8%",
                 left: "50%",
                 transform: "translateX(-50%)",
                 whiteSpace: "nowrap",
