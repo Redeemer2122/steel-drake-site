@@ -79,35 +79,6 @@ function HUDGrid() {
   );
 }
 
-function ScrollIndicator() {
-  return (
-    <motion.div
-      className="absolute bottom-10 right-8 md:right-12 flex flex-col items-center gap-3"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.8, duration: 0.6, ease: EASE }}
-    >
-      <span
-        className="text-[10px] font-body font-medium tracking-[0.2em] text-(--text-secondary) uppercase"
-        style={{ writingMode: "vertical-rl" }}
-      >
-        Scroll
-      </span>
-      <div className="w-px h-10 overflow-hidden relative">
-        <motion.div
-          className="w-full bg-linear-to-b from-accent to-transparent absolute top-0"
-          animate={{ y: ["0%", "-100%"] }}
-          transition={{
-            duration: 1.4,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      </div>
-    </motion.div>
-  );
-}
-
 export function Hero() {
   return (
     <section
@@ -118,6 +89,7 @@ export function Hero() {
         justifyContent: "center",
         padding: "0 8%",
         position: "relative",
+        overflow: "hidden",
       }}
     >
       {/* ── Background: Variant B — CSS gradient + HUD grid ── */}
@@ -161,7 +133,7 @@ export function Hero() {
         style={{
           display: "flex",
           alignItems: "center",
-          minHeight: "100vh",
+          justifyContent: "center",
           padding: "0 8%",
         }}
       >
@@ -211,9 +183,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      {/* ── Scroll indicator ── */}
-      <ScrollIndicator />
     </section>
   );
 }
