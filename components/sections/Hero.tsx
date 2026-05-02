@@ -137,7 +137,7 @@ export function Hero() {
       >
         <div className="w-full max-w-2xl">
           {/* Glassmorphism panel */}
-          <div className="relative" style={{ overflow: "hidden" }}>
+          <div className="relative">
             {/* Inner refraction edge */}
             <div
               className="absolute inset-0 rounded-none pointer-events-none"
@@ -146,21 +146,26 @@ export function Hero() {
               }}
             />
 
-            {/* Massive headline — BlurText per word */}
-            <h1
-              className="font-display font-black uppercase w-full"
+            <p
               style={{
-                lineHeight: 0.9,
-                color: "#FFFFFF",
+                fontFamily: "var(--font-display)",
+                fontSize: "15px",
+                fontWeight: 600,
+                letterSpacing: "0.6em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.9)",
                 textShadow:
-                  "0 0 80px rgba(0,212,255,0.4), 0 2px 20px rgba(0,0,0,0.8)",
-                letterSpacing: "-0.02em",
-                fontSize: "clamp(60px, 12vw, 180px)",
+                  "0 0 20px rgba(255,255,255,0.8), 0 0 60px rgba(0,212,255,0.4)",
+                position: "absolute",
+                top: "32px",
+                left: "50%",
+                transform: "translateX(-50%)",
                 whiteSpace: "nowrap",
+                zIndex: 20,
               }}
             >
-              <BlurText text="Design Beyond Limits" />
-            </h1>
+              Design Beyond Limits
+            </p>
           </div>
         </div>
       </div>
