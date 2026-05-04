@@ -1,183 +1,317 @@
 "use client";
 
-import Image from "next/image";
-import type { ReactElement } from "react";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
-const disciplines = [
-  { name: "Industrial Design", icon: "hexagon" },
-  { name: "Automotive", icon: "car" },
-  { name: "Branding", icon: "circle" },
-  { name: "Motion", icon: "target" },
-];
-
-const stats = [
-  { value: "13+", label: "Years" },
-  { value: "100+", label: "Projects" },
-  { value: "5", label: "Countries" },
-  { value: "Best of", label: "Behance" },
-];
-
-function DisciplineIcon({ type }: { type: string }): ReactElement {
-  const icons: Record<string, ReactElement> = {
-    hexagon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <path d="M12 2l8 4.5v9L12 22l-8-6.5v-9L12 2z" />
-      </svg>
-    ),
-    car: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <path d="M5 17h14M5 17a2 2 0 01-2-2V9a2 2 0 012-2h14a2 2 0 012 2v6a2 2 0 01-2 2M5 17l-1 3M19 17l1 3M7 9l1.5-3.5A1.5 1.5 0 0110 4h4a1.5 1.5 0 011.5 1.5L17 9" />
-      </svg>
-    ),
-    circle: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <circle cx="12" cy="12" r="9" />
-      </svg>
-    ),
-    target: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <circle cx="12" cy="12" r="9" />
-        <circle cx="12" cy="12" r="5" />
-        <circle cx="12" cy="12" r="1" fill="currentColor" />
-      </svg>
-    ),
-  };
-  return icons[type] || null;
-}
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function About() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const ambientOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [0.3, 0.6, 0.6, 0.3],
+  );
+  const ambientX = useTransform(scrollYProgress, [0, 1], [20, -20]);
+
   return (
-    <section id="about" className="relative w-full px-6 py-40">
-      <div className="mx-auto max-w-7xl">
-        {/* Section Label */}
-        <RevealOnScroll delay={0}>
-          <SectionLabel index="01" className="mb-12">
-            ABOUT
-          </SectionLabel>
-        </RevealOnScroll>
+    <section
+      id="about"
+      ref={containerRef}
+      className="relative w-full"
+      style={{
+        background: "#0a0a0a",
+        overflow: "hidden",
+      }}
+    >
+      {/* Subtle Ambient Background Layer */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity: ambientOpacity,
+          x: ambientX,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "10%",
+            right: "15%",
+            width: "60vw",
+            height: "60vw",
+            maxWidth: "800px",
+            maxHeight: "800px",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "20%",
+            left: "5%",
+            width: "40vw",
+            height: "40vw",
+            maxWidth: "500px",
+            maxHeight: "500px",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(0, 212, 255, 0.02) 0%, transparent 70%)",
+            filter: "blur(100px)",
+          }}
+        />
+      </motion.div>
 
-        {/* Main Grid with gap-40 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-40 items-start">
-          {/* Left Column — Identity + Disciplines */}
-          <div>
-            {/* Headline */}
-            <RevealOnScroll delay={0.1}>
-              <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-black leading-none tracking-tight text-white mb-8">
-                STEEL
-                <br />
-                <span className="text-accent">DRAKE</span>
-              </h2>
-            </RevealOnScroll>
+      <div
+        className="relative"
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "clamp(8rem, 18vw, 16rem) clamp(2rem, 6vw, 8rem)",
+        }}
+      >
+        {/* Editorial Layout — Two Column */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-32">
+          {/* Left — Studio Statement */}
+          <div className="lg:col-span-5">
+            {/* Subtle Section Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE }}
+              viewport={{ once: true }}
+              style={{ marginBottom: "2.5rem" }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "10px",
+                  fontWeight: 500,
+                  letterSpacing: "0.25em",
+                  textTransform: "uppercase",
+                  color: "var(--accent)",
+                }}
+              >
+                About
+              </span>
+            </motion.div>
 
-            {/* Bio - slightly smaller typography */}
-            <RevealOnScroll delay={0.2}>
-              <p className="font-body text-sm text-(--text-secondary) leading-relaxed max-w-[48ch] mb-12">
-                Multidisciplinary designer with deep expertise in industrial
-                design and automotive aesthetics. Building visual systems that
-                communicate authority, precision, and forward motion.
+            {/* Refined Heading */}
+            <motion.h2
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
+              viewport={{ once: true }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontWeight: 600,
+                lineHeight: 1.3,
+                letterSpacing: "-0.02em",
+                color: "#fafafa",
+                marginBottom: "2rem",
+              }}
+            >
+              A studio built on precision, craft, and an unwavering attention to
+              detail.
+            </motion.h2>
+
+            {/* Statement */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  lineHeight: 1.9,
+                  color: "rgba(250, 250, 250, 0.45)",
+                  maxWidth: "48ch",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Steel Drake operates at the intersection of industrial design
+                and automotive aesthetics. Every project is an opportunity to
+                create work that communicates authority and precision.
               </p>
-            </RevealOnScroll>
-
-            {/* Discipline Grid 2x2 */}
-            <div className="grid grid-cols-2 gap-3">
-              {disciplines.map((d, i) => (
-                <RevealOnScroll key={d.name} delay={0.3 + i * 0.08}>
-                  <GlassCard className="px-5 py-4 hover:border-accent/30">
-                    <span className="mb-3 block text-accent">
-                      <DisciplineIcon type={d.icon} />
-                    </span>
-                    <span className="font-body text-sm font-medium text-white/80 leading-tight">
-                      {d.name}
-                    </span>
-                  </GlassCard>
-                </RevealOnScroll>
-              ))}
-            </div>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  lineHeight: 1.9,
+                  color: "rgba(250, 250, 250, 0.45)",
+                  maxWidth: "48ch",
+                }}
+              >
+                We do not chase trends. We build lasting visual systems that
+                stand apart.
+              </p>
+            </motion.div>
           </div>
 
-          {/* Right Column — Photo Block */}
-          <RevealOnScroll delay={0.2}>
-            <div className="relative lg:mt-16">
-              {/* Photo wrapped in GlassCard */}
-              <GlassCard className="aspect-3/4 overflow-hidden">
-                <Image
-                  src="/images/designer.jpg"
-                  alt="Steel Drake — Multidisciplinary Designer"
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
-                {/* Subtle gradient overlay at bottom */}
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
-                {/* Corner accent line */}
-                <span className="absolute bottom-0 right-0 h-16 w-px bg-accent/40" />
-                <span className="absolute bottom-0 right-0 h-px w-16 bg-accent/40" />
-              </GlassCard>
+          {/* Right — Disciplines & Metrics */}
+          <motion.div
+            className="lg:col-span-6 lg:col-start-7"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: EASE, delay: 0.3 }}
+            viewport={{ once: true }}
+            style={{ position: "relative", paddingLeft: "2rem" }}
+          >
+            {/* Subtle vertical accent line */}
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                top: "0.5rem",
+                bottom: "0.5rem",
+                width: "1px",
+                background:
+                  "linear-gradient(to bottom, transparent, rgba(0, 212, 255, 0.3) 30%, rgba(0, 212, 255, 0.3) 70%, transparent)",
+              }}
+            />
 
-              {/* Badge - Freelance */}
-              <div className="absolute -bottom-5 -left-4 z-10">
-                <div className="flex items-center gap-2 border border-accent/40 bg-accent/10 px-4 py-2 backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                  <span className="font-body text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-                    Freelance
-                  </span>
-                </div>
+            {/* Disciplines */}
+            <div
+              style={{
+                marginBottom: "clamp(5rem, 10vw, 6rem)",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "10px",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "rgba(250, 250, 250, 0.25)",
+                  marginBottom: "2.5rem",
+                }}
+              >
+                Disciplines
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1.5rem",
+                }}
+              >
+                {[
+                  "Industrial Design",
+                  "Automotive Aesthetics",
+                  "Visual Branding",
+                  "Motion Design",
+                ].map((discipline, i) => (
+                  <motion.div
+                    key={discipline}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, ease: EASE, delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "1rem",
+                      paddingBottom: "1.5rem",
+                      borderBottom: "1px solid rgba(255, 255, 255, 0.03)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "clamp(16px, 1.4vw, 18px)",
+                        color: "rgba(250, 250, 250, 0.75)",
+                        letterSpacing: "0.01em",
+                      }}
+                    >
+                      {discipline}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "10px",
+                        color: "var(--accent)",
+                        letterSpacing: "0.15em",
+                        opacity: 0.6,
+                      }}
+                    >
+                      0{i + 1}
+                    </span>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </RevealOnScroll>
-        </div>
 
-        {/* Stats Row with thin line dividers */}
-        <div className="mt-20 pt-8 border-t border-white/6">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
-            {stats.map((s, i) => (
-              <RevealOnScroll key={s.label} delay={0.5 + i * 0.07}>
-                <div className="relative px-8 py-6 first:pl-0 last:pr-0">
-                  {/* Thin vertical divider */}
-                  {i > 0 && (
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-px bg-white/10" />
-                  )}
-                  <div className="font-display text-4xl font-black text-accent leading-none tracking-tight mb-2">
-                    {s.value}
-                  </div>
-                  <div className="font-body text-xs uppercase tracking-[0.16em] text-(--text-secondary)">
-                    {s.label}
-                  </div>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
+            {/* Metrics */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "10px",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "rgba(250, 250, 250, 0.25)",
+                  marginBottom: "2.5rem",
+                }}
+              >
+                By the Numbers
+              </p>
+              <div style={{ display: "flex", gap: "clamp(3.5rem, 7vw, 6rem)" }}>
+                {[
+                  { value: "13+", label: "Years" },
+                  { value: "100+", label: "Projects" },
+                  { value: "5", label: "Countries" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.label}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      ease: EASE,
+                      delay: 0.4 + i * 0.1,
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "clamp(2.25rem, 3.5vw, 3.25rem)",
+                        fontWeight: 600,
+                        color: "#fafafa",
+                        lineHeight: 1,
+                      }}
+                    >
+                      {s.value}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "10px",
+                        letterSpacing: "0.15em",
+                        textTransform: "uppercase",
+                        color: "rgba(250, 250, 250, 0.3)",
+                        marginTop: "0.75rem",
+                      }}
+                    >
+                      {s.label}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

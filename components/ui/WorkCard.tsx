@@ -9,138 +9,66 @@ type WorkCardProps = {
   index: number;
 };
 
-const sizeConfig = {
-  large: { aspect: "aspect-[4/3]", cols: "col-span-2", rows: "" },
-  small: { aspect: "aspect-square", cols: "col-span-1", rows: "" },
-  medium: { aspect: "aspect-[21/9]", cols: "col-span-3", rows: "" },
-  tall: { aspect: "aspect-[3/4]", cols: "col-span-1", rows: "row-span-2" },
-};
-
 export function WorkCard({ work, index }: WorkCardProps) {
-  const { aspect, cols, rows } = sizeConfig[work.size];
-
   return (
     <motion.div
-      className={`group relative overflow-hidden cursor-pointer ${cols} ${rows}`}
-      whileHover="hover"
-      initial="rest"
+      className="group relative cursor-pointer"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div
-        className={`relative w-full ${aspect} overflow-hidden border border-white/6 bg-surface transition-all duration-500 hover:scale-[1.02]`}
-        style={{
-          borderColor: "rgba(255,255,255,0.06)",
-        }}
+      {/* Card with lift on hover */}
+      <motion.div
+        className="relative aspect-[4/3] overflow-hidden"
+        whileHover={{ y: -4 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Inner glow border on hover */}
-        <motion.div
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500"
-          variants={{
-            rest: { opacity: 0 },
-            hover: { opacity: 1 },
-          }}
-          style={{
-            boxShadow: `inset 0 0 0 1px ${work.accentColor}40`,
-          }}
-        />
+        {/* Image with zoom */}
+        <div className="absolute inset-0 overflow-hidden">
+          {work.image && (
+            <motion.div
+              className="h-full w-full"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Image
+                src={work.image}
+                alt={work.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+              />
+            </motion.div>
+          )}
 
-        {/* Accent top line */}
-        <motion.div
-          className="absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-500"
-          variants={{
-            rest: { opacity: 0 },
-            hover: { opacity: 1 },
-          }}
-          style={{
-            background: `linear-gradient(90deg, transparent, ${work.accentColor}80, transparent)`,
-          }}
-        />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+        </div>
 
         {/* Project number */}
-        <div className="absolute top-4 left-5 z-10">
+        <div className="absolute top-4 left-4 z-10">
           <span
-            className="font-display text-[10px] font-medium tracking-[0.2em] uppercase"
+            className="font-display text-xs font-medium tracking-[0.18em] uppercase"
             style={{ color: work.accentColor }}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
 
-        {/* Arrow icon on hover */}
-        <motion.div
-          className="absolute top-4 right-5 z-10"
-          variants={{
-            rest: { opacity: 0, x: -4 },
-            hover: { opacity: 1, x: 0 },
-          }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            style={{ color: work.accentColor }}
-          >
-            <path
-              d="M3 13L13 3M13 3H6M13 3V10"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.div>
-
-        {/* Project Image */}
-        {work.image && (
-          <Image
-            src={work.image}
-            alt={work.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        )}
-
-        {/* Gradient overlay for text readability */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(to top, ${work.accentColor}15 0%, transparent 40%),
-                        radial-gradient(ellipse at 30% 70%, ${work.accentColor}08 0%, transparent 60%),
-                        radial-gradient(ellipse at 70% 30%, ${work.accentColor}05 0%, transparent 50%)`,
-          }}
-        />
-
-        {/* Subtle grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
-          }}
-        />
-
-        {/* Bottom info */}
-        <div className="absolute bottom-0 inset-x-0 p-5">
-          <div className="flex items-end justify-between">
-            <div>
-              <h3 className="font-display text-base font-semibold leading-tight tracking-tight text-white mb-1">
-                {work.title}
-              </h3>
-              <p className="font-body text-[11px] text-white/40 uppercase tracking-[0.14em]">
-                {work.category}
-              </p>
-            </div>
-            <span className="font-body text-[10px] text-white/30">
-              {work.year}
-            </span>
-          </div>
+        {/* Content */}
+        <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+          <p className="font-body text-[10px] text-white/50 uppercase tracking-[0.14em] mb-1.5">
+            {work.category}
+          </p>
+          <h3 className="font-display text-base font-semibold leading-tight tracking-tight text-white">
+            {work.title}
+          </h3>
+          <span className="font-body text-[10px] text-white/30 mt-2 block">
+            {work.year}
+          </span>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
