@@ -50,7 +50,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-body text-[13px] font-medium uppercase tracking-[0.15em] text-(--text-secondary) transition-colors duration-200 hover:text-accent"
+                className="font-body text-[13px] font-medium uppercase tracking-[0.15em] text-(--text-secondary) transition-colors duration-200 hover:text-accent cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-sm"
               >
                 {link.label}
               </Link>
@@ -122,7 +122,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="font-display text-3xl font-black uppercase tracking-[0.08em] text-(--text-primary) transition-colors duration-200 hover:text-accent"
+                    className="font-display text-3xl font-black uppercase tracking-[0.08em] text-(--text-primary) transition-colors duration-200 hover:text-accent cursor-pointer focus:outline-none focus-visible:text-accent"
                   >
                     {link.label}
                   </Link>
