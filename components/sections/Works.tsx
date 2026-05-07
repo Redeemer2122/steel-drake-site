@@ -3,7 +3,7 @@
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { WorkCard } from "@/components/ui/WorkCard";
-import { works } from "@/data/works";
+import { projects } from "@/data/projects";
 
 export function Works() {
   return (
@@ -27,9 +27,9 @@ export function Works() {
 
         {/* Clean 3-Column Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {works.map((work, index) => (
-            <RevealOnScroll key={work.id} delay={0.1 + index * 0.05}>
-              <WorkCard work={work} index={index} />
+          {projects.map((project, index) => (
+            <RevealOnScroll key={project.slug} delay={0.1 + index * 0.05}>
+              <WorkCard work={project} index={index} />
             </RevealOnScroll>
           ))}
         </div>

@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import type { Work } from "@/data/works";
+import type { Project } from "@/data/projects";
 
 type WorkCardProps = {
-  work: Work;
+  work: Project;
   index: number;
 };
 
