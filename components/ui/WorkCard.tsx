@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 
@@ -10,12 +11,6 @@ type WorkCardProps = {
 };
 
 export function WorkCard({ work, index }: WorkCardProps) {
-  const handleClick = () => {
-    // Placeholder for project detail navigation
-    // Replace with actual project page URL when available
-    console.log(`Navigate to project: ${work.title}`);
-  };
-
   return (
     <motion.div
       className="group relative"
@@ -25,12 +20,8 @@ export function WorkCard({ work, index }: WorkCardProps) {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* Clickable card wrapper */}
-      <a
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          handleClick();
-        }}
+      <Link
+        href={`/projects/${work.slug}`}
         className="block cursor-pointer rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
         aria-label={`View project: ${work.title} - ${work.category}, ${work.year}`}
       >
@@ -89,7 +80,7 @@ export function WorkCard({ work, index }: WorkCardProps) {
             </h3>
           </div>
         </motion.div>
-      </a>
+      </Link>
     </motion.div>
   );
 }

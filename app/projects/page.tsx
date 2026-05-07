@@ -44,56 +44,60 @@ export default function ProjectsPage() {
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <article
+            <Link
               key={project.slug}
+              href={`/projects/${project.slug}`}
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-[border-color,background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.04]"
+              aria-label={`View project: ${project.title} - ${project.category}, ${project.year}`}
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-bg-elevated">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover brightness-[0.82] contrast-[1.06] saturate-[0.9] transition-[filter,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035] group-hover:brightness-[0.94] group-hover:contrast-[1.12] group-hover:saturate-100"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/20 to-transparent" />
-                <span
-                  className="absolute left-5 top-5 font-body text-[10px] font-medium uppercase tracking-[0.22em]"
-                  style={{ color: project.accentColor }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </div>
-
-              <div className="p-5 md:p-6">
-                <div className="mb-3 flex items-center justify-between gap-4">
-                  <p className="font-body text-[10px] font-medium uppercase tracking-[0.18em] text-white/55">
-                    {project.category}
-                  </p>
-                  <span className="font-body text-[10px] text-white/35">
-                    {project.year}
+              <article>
+                <div className="relative aspect-[4/3] overflow-hidden bg-bg-elevated">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover brightness-[0.82] contrast-[1.06] saturate-[0.9] transition-[filter,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035] group-hover:brightness-[0.94] group-hover:contrast-[1.12] group-hover:saturate-100"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/20 to-transparent" />
+                  <span
+                    className="absolute left-5 top-5 font-body text-[10px] font-medium uppercase tracking-[0.22em]"
+                    style={{ color: project.accentColor }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
-                <h2 className="font-display text-xl font-semibold leading-[1.02] tracking-[-0.04em] text-white">
-                  {project.title}
-                </h2>
-                <p className="mt-4 font-body text-sm leading-6 text-white/52">
-                  {project.description}
-                </p>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/10 px-3 py-1 font-body text-[10px] uppercase tracking-[0.16em] text-white/42"
-                    >
-                      {tag}
+                <div className="p-5 md:p-6">
+                  <div className="mb-3 flex items-center justify-between gap-4">
+                    <p className="font-body text-[10px] font-medium uppercase tracking-[0.18em] text-white/55">
+                      {project.category}
+                    </p>
+                    <span className="font-body text-[10px] text-white/35">
+                      {project.year}
                     </span>
-                  ))}
+                  </div>
+
+                  <h2 className="font-display text-xl font-semibold leading-[1.02] tracking-[-0.04em] text-white">
+                    {project.title}
+                  </h2>
+                  <p className="mt-4 font-body text-sm leading-6 text-white/52">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/10 px-3 py-1 font-body text-[10px] uppercase tracking-[0.16em] text-white/42"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
       </div>
