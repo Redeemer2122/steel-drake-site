@@ -26,7 +26,7 @@ export function Works() {
         </RevealOnScroll>
 
         {/* Clean 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {works.map((work, index) => (
             <RevealOnScroll key={work.id} delay={0.1 + index * 0.05}>
               <WorkCard work={work} index={index} />
@@ -36,13 +36,13 @@ export function Works() {
 
         {/* View All CTA */}
         <RevealOnScroll delay={0.4}>
-          <div className="mt-16 flex justify-center">
-            <button className="group flex items-center gap-3 py-4 transition-all duration-300 hover:gap-4">
-              <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-white/50 transition-colors group-hover:text-white">
+          <div className="mt-14 flex justify-center">
+            <button className="group flex items-center gap-3 rounded-full border border-white/10 px-5 py-3.5 transition-[border-color,background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.03] active:translate-y-0">
+              <span className="font-body text-xs font-medium uppercase tracking-[0.22em] text-white/55 transition-colors duration-500 group-hover:text-white">
                 View All Projects
               </span>
               <svg
-                className="h-4 w-4 text-accent transition-transform duration-300 group-hover:translate-x-1"
+                className="h-4 w-4 text-accent/85 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1"
                 viewBox="0 0 16 16"
                 fill="none"
               >
