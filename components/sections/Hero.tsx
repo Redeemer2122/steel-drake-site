@@ -184,63 +184,66 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.0, ease: EASE, delay: 1.3 }}
         >
-          <button
-            onClick={() => {
+          <motion.a
+            href="#contact"
+            initial="rest"
+            animate="rest"
+            whileHover="hover"
+            onClick={(event) => {
+              event.preventDefault();
               document
                 .getElementById("contact")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="group inline-flex items-center gap-3 cursor-pointer"
+            className="relative inline-flex cursor-pointer items-center px-4 py-2 text-lg font-semibold focus:outline-none focus-visible:text-white md:text-xl"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: "clamp(15px, 1.3vw, 17px)",
-              fontWeight: 600,
-              letterSpacing: "0.08em",
-              color: "rgba(250, 250, 250, 0.85)",
               textDecoration: "none",
-              background: "none",
-              border: "none",
-              padding: 0,
             }}
             aria-label="Start a Project - Scroll to contact section"
           >
-            <span className="relative">
-              Start a Project
-              {/* Underline */}
-              <span
-                className="absolute bottom-0 left-0 w-full h-px origin-left scale-x-0 group-hover:scale-x-100"
-                style={{
-                  background: "var(--accent)",
-                  transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                  transitionDelay: "0.05s",
-                }}
-              />
-            </span>
-            {/* Arrow */}
-            <span
-              className="inline-flex"
-              style={{
-                color: "var(--accent)",
-                transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                transitionDelay: "0.08s",
-                display: "inline-flex",
+            <motion.span
+              variants={{
+                rest: { color: "rgba(255, 255, 255, 0.7)" },
+                hover: { color: "rgba(255, 255, 255, 1)" },
               }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Start a Project
+            </motion.span>
+
+            <motion.span
+              className="ml-3 inline-flex text-[#00ffff] opacity-80"
+              variants={{
+                rest: { x: 0, opacity: 0.8 },
+                hover: { x: 8, opacity: 1 },
+              }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              aria-hidden="true"
             >
               <svg
-                width="18"
-                height="18"
+                width="22"
+                height="22"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="group-hover:translate-x-1"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </span>
-          </button>
+            </motion.span>
+
+            <motion.span
+              className="absolute bottom-0 left-4 right-4 h-[2px] origin-left bg-[#00ffff]"
+              variants={{
+                rest: { scaleX: 0 },
+                hover: { scaleX: 1 },
+              }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            />
+          </motion.a>
         </motion.div>
 
         {/* Bottom Bar */}
