@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { WorkCard } from "@/components/ui/WorkCard";
@@ -37,7 +38,10 @@ export function Works() {
         {/* View All CTA */}
         <RevealOnScroll delay={0.4}>
           <div className="mt-14 flex justify-center">
-            <button className="group flex items-center gap-3 rounded-full border border-white/10 px-5 py-3.5 transition-[border-color,background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.03] active:translate-y-0">
+            <Link
+              href="/projects"
+              className="group flex items-center gap-3 rounded-full border border-white/10 px-5 py-3.5 transition-[border-color,background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.03] active:translate-y-0"
+            >
               <span className="font-body text-xs font-medium uppercase tracking-[0.22em] text-white/55 transition-colors duration-500 group-hover:text-white">
                 View All Projects
               </span>
@@ -54,7 +58,7 @@ export function Works() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </RevealOnScroll>
       </div>
