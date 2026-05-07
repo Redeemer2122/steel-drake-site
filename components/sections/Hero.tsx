@@ -39,7 +39,7 @@ export function Hero() {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover brightness-[0.88] contrast-[1.02] saturate-[0.92]"
         >
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
@@ -50,7 +50,7 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 30%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.15) 100%)",
+            "linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.76) 32%, rgba(10,10,10,0.44) 56%, rgba(10,10,10,0.32) 100%)",
         }}
       />
       {/* Right-side video darkening for contrast */}
@@ -58,14 +58,21 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to left, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0) 50%)",
+            "linear-gradient(to left, rgba(10,10,10,0.46) 0%, rgba(10,10,10,0.18) 34%, rgba(10,10,10,0) 64%)",
         }}
       />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, transparent 20%, transparent 70%, rgba(10,10,10,0.8) 100%)",
+            "linear-gradient(to bottom, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.18) 24%, rgba(10,10,10,0.16) 62%, rgba(10,10,10,0.9) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 72% 24%, rgba(10,10,10,0.28) 0%, rgba(10,10,10,0.1) 28%, transparent 52%), radial-gradient(circle at 58% 48%, rgba(10,10,10,0.18) 0%, transparent 38%)",
         }}
       />
 
@@ -80,7 +87,8 @@ export function Hero() {
           flexDirection: "column",
           justifyContent: "center",
           minHeight: "100dvh",
-          padding: "clamp(4rem, 10vw, 12rem)",
+          padding:
+            "clamp(5.5rem, 9vw, 11rem) clamp(4rem, 10vw, 12rem) clamp(6.75rem, 10vw, 12rem)",
           maxWidth: "1600px",
           margin: "0 auto",
         }}
@@ -122,13 +130,13 @@ export function Hero() {
         <h1
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(3.5rem, 9vw, 11rem)",
+            fontSize: "clamp(3.1rem, 7.8vw, 9.6rem)",
             fontWeight: 800,
-            lineHeight: 0.9,
-            letterSpacing: "-0.03em",
+            lineHeight: 0.96,
+            letterSpacing: "-0.026em",
             color: "#fafafa",
-            marginBottom: "2.5rem",
-            textShadow: "0 2px 40px rgba(0,0,0,0.5)",
+            marginBottom: "2.9rem",
+            textShadow: "0 2px 34px rgba(0,0,0,0.58)",
           }}
         >
           <motion.span
@@ -169,9 +177,9 @@ export function Hero() {
             fontFamily: "var(--font-body)",
             fontSize: "clamp(16px, 1.4vw, 19px)",
             lineHeight: 1.7,
-            color: "rgba(250, 250, 250, 0.55)",
+            color: "rgba(250, 250, 250, 0.6)",
             maxWidth: "42ch",
-            marginBottom: "3rem",
+            marginBottom: "3.6rem",
           }}
         >
           Industrial design, automotive concepts, branding, and motion — united
@@ -199,12 +207,13 @@ export function Hero() {
             style={{
               fontFamily: "var(--font-body)",
               textDecoration: "none",
+              letterSpacing: "-0.01em",
             }}
             aria-label="Start a Project - Scroll to contact section"
           >
             <motion.span
               variants={{
-                rest: { color: "rgba(255, 255, 255, 0.7)" },
+                rest: { color: "rgba(255, 255, 255, 0.78)" },
                 hover: { color: "rgba(255, 255, 255, 1)" },
               }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -213,10 +222,10 @@ export function Hero() {
             </motion.span>
 
             <motion.span
-              className="ml-3 inline-flex text-[#00ffff] opacity-80"
+              className="ml-3 inline-flex text-[#00ffff] opacity-75"
               variants={{
-                rest: { x: 0, opacity: 0.8 },
-                hover: { x: 8, opacity: 1 },
+                rest: { x: 0, opacity: 0.75 },
+                hover: { x: 8, opacity: 0.95 },
               }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               aria-hidden="true"

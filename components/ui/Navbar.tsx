@@ -22,25 +22,36 @@ export function Navbar() {
   const navBackground = useTransform(
     scrollY,
     [0, 72],
-    ["rgba(10,10,10,0)", "rgba(10,10,10,0.85)"],
+    ["rgba(10,10,10,0)", "rgba(10,10,10,0.78)"],
   );
   const navBorder = useTransform(
     scrollY,
     [0, 72],
-    ["rgba(255,255,255,0)", "rgba(255,255,255,0.06)"],
+    ["rgba(255,255,255,0)", "rgba(255,255,255,0.075)"],
   );
+  const navBlur = useTransform(scrollY, [0, 72], ["blur(0px)", "blur(16px)"]);
 
   return (
     <>
       <motion.header
-        style={{ backgroundColor: navBackground, borderBottomColor: navBorder }}
-        className="fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md"
+        style={{
+          backgroundColor: navBackground,
+          borderBottomColor: navBorder,
+          backdropFilter: navBlur,
+          WebkitBackdropFilter: navBlur,
+        }}
+        className="fixed inset-x-0 top-0 z-40 border-b"
       >
         <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
             aria-label="Steel Drake home"
-            className="font-display text-sm font-black uppercase tracking-[0.16em] text-(--text-primary) transition-colors duration-200 hover:text-white sm:text-base"
+            onClick={(event) => {
+              event.preventDefault();
+              setIsOpen(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="font-display text-sm font-black uppercase tracking-[0.16em] text-(--text-primary) transition-colors duration-200 hover:text-white active:text-accent sm:text-base"
           >
             <span className="mr-2 text-accent">—</span>Steel Drake
           </Link>
@@ -50,7 +61,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-body text-[13px] font-medium uppercase tracking-[0.15em] text-(--text-secondary) transition-colors duration-200 hover:text-accent cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-sm"
+                className="cursor-pointer rounded-sm font-body text-[13px] font-medium uppercase tracking-[0.15em] text-(--text-secondary) transition-colors duration-200 hover:text-white active:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
               >
                 {link.label}
               </Link>
@@ -122,7 +133,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="font-display text-3xl font-black uppercase tracking-[0.08em] text-(--text-primary) transition-colors duration-200 hover:text-accent cursor-pointer focus:outline-none focus-visible:text-accent"
+                    className="cursor-pointer font-display text-3xl font-black uppercase tracking-[0.08em] text-(--text-primary) transition-colors duration-200 hover:text-white active:text-accent focus:outline-none focus-visible:text-accent"
                   >
                     {link.label}
                   </Link>
